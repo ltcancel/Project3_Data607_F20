@@ -1,0 +1,6 @@
+[project3]
+user='postgres'
+password='10Pancakes'
+host='localhost'
+port=5432
+database='data607'

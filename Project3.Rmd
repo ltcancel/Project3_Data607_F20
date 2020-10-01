@@ -1,0 +1,52 @@
+---
+title: "Project3"
+author: "LeTicia Cancel"
+date: "9/29/2020"
+output: html_document
+---
+```{r}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+libraries
+```{r}
+library(DBI)
+library(RCurl)
+library(RMariaDB)
+```
+
+connect to DB
+```{r}
+rmariadb.settingsfile<-"DBConnection.cnf"
+
+rmariadb.db<-"project3"
+
+moviesDb<-dbConnect(RMariaDB::MariaDB(),default.file=rmariadb.settingsfile, group=rmariadb.db)
+
+
+
+
+
+con <- dbConnect(
+  drv = RMariaDB::MariaDB(),
+  username = 'root',
+  password = 'Milk.800.flying',
+  host = 'localhost',
+  port = 3306,
+  db = 'project3'
+)
+
+dbListTables(con)
+
+?RMariaDB
+
+#test table creation
+query<-"CREATE TABLE parking_tickets_chicago (ticket_number TEXT,  issue_date TEXT,  violation_location TEXT,  license_plate_number TEXT,  license_plate_state TEXT,  license_plate_type TEXT,  zipcode TEXT,  violation_code TEXT,  violation_description TEXT,  unit INT,  unit_description TEXT,  vehicle_make TEXT,  fine_level1_amount INT,  fine_level2_amount INT,  current_amount_due INT,  total_payments INT,  ticket_queue TEXT,  ticket_queue_date TEXT,  notice_level TEXT,  hearing_disposition TEXT,  notice_number TEXT,  officer TEXT,  address TEXT);"
+
+results <- dbSendQuery(con, query)
+
+```
+
